@@ -1,0 +1,67 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Helper functions
+    function isAuthenticated() {
+      return request.auth != null && request.auth.uid != null;
+    }
+
+    function isOwner(uid) {
+      return isAuthenticated() && request.auth.uid == uid;
+    }
+
+    // Rules for users collection: users/{usernameLowercase}
+    match /users/{usernameLowercase} {
+      // Anyone can read leaderboard data
+      allow read: if true;
+
+      // Create new user reservation (atomic transaction)
+      allow create: if isAuthenticated()
+        && request.resource.data.uid == request.auth.uid
+        && usernameLowercase.matches('^[a-z0-9_]{3,16}$')
+        && request.resource.data.displayName.matches('^[a-zA-Z0-9_]{3,16}$')
+        && request.resource.data.bestScore is int
+        && request.resource.data.bestScore >= 0
+        && request.resource.data.bestScore <= 5000000
+        && request.resource.data.bestLevelsCleared is int
+        && request.resource.data.bestLevelsCleared >= 0
+        && request.resource.data.bestLevelsCleared <= 200;
+
+      // Update existing user: only owner can update their own document
+      allow update: if isAuthenticated()
+        && resource.data.uid == request.auth.uid
+        && request.resource.data.uid == request.auth.uid
+        && request.resource.data.bestScore is int
+        && request.resource.data.bestScore >= resource.data.bestScore
+        && request.resource.data.bestScore <= 5000000
+        && request.resource.data.bestLevelsCleared is int
+        && request.resource.data.bestLevelsCleared >= 0
+        && request.resource.data.bestLevelsCleared <= 200;
+
+      // Deletion is forbidden
+      allow delete: if false;
+    }
+
+    // Rules for runs collection: runs/{runId}
+    match /runs/{runId} {
+      // Anyone can read runs
+      allow read: if true;
+
+      // Create run: must be authenticated and match request.auth.uid
+      allow create: if isAuthenticated()
+        && request.resource.data.uid == request.auth.uid
+        && request.resource.data.score is int
+        && request.resource.data.score >= 0
+        && request.resource.data.score <= 5000000
+        && request.resource.data.levelsCleared is int
+        && request.resource.data.levelsCleared >= 0
+        && request.resource.data.levelsCleared <= 200
+        && request.resource.data.totalTimeMs is int
+        && request.resource.data.totalTimeMs >= 0;
+
+      // Runs are immutable once created
+      allow update, delete: if false;
+    }
+  }
+}

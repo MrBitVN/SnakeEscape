@@ -1,0 +1,36 @@
+# ==============================
+# General
+# ==============================
+.DS_Store
+Thumbs.db
+*.log
+*.tmp
+*.bak
+
+# ==============================
+# Android
+# ==============================
+.gradle/
+build/
+*/build/
+.kotlin/
+local.properties
+*.apk
+*.aab
+.idea/
+*.iml
+captures/
+.externalNativeBuild/
+.cxx/
+
+# ==============================
+# iOS / Swift / Xcode
+# ==============================
+.build/
+DerivedData/
+xcuserdata/
+*.xcuserstate
+*.xcscmblueprint
+*.ipa
+.swiftpm/
+Packages/

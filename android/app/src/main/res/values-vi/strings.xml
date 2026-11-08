@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Snake Escape</string>
+    <string name="level_prefix">Màn</string>
+    <string name="time_left">Thời gian</string>
+    <string name="escaped_snakes">Đã thoát</string>
+    <string name="pause">Tạm dừng</string>
+    <string name="resume">Tiếp tục</string>
+    <string name="restart">Chơi lại</string>
+    <string name="settings">Cài đặt</string>
+    <string name="select_level">Chọn màn</string>
+    <string name="next_level">Màn tiếp theo</string>
+    <string name="level_cleared">Vượt màn thành công!</string>
+    <string name="game_over">Thua cuộc</string>
+    <string name="out_of_hearts">Hết tim rồi!</string>
+    <string name="out_of_time">Hết thời gian!</string>
+    <string name="booster_hint">Gợi ý</string>
+    <string name="booster_grid_vision">Mắt thần</string>
+    <string name="booster_add_time">+30 giây</string>
+    <string name="undo">Hoàn tác</string>
+    <string name="sound_effects">Hiệu ứng âm thanh</string>
+    <string name="music">Nhạc nền</string>
+    <string name="haptics">Rung &amp; Cảm ứng</string>
+    <string name="dark_mode">Giao diện</string>
+    <string name="theme_system">Hệ thống</string>
+    <string name="theme_dark">Tối</string>
+    <string name="theme_light">Sáng</string>
+    <string name="language">Ngôn ngữ</string>
+    <string name="lang_english">English</string>
+    <string name="lang_vietnamese">Tiếng Việt</string>
+    <string name="close">Đóng</string>
+</resources>

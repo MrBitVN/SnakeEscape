@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- Snake Body -->
+    <path
+        android:pathData="M34,74 C34,82 46,82 54,74 C62,66 74,66 74,54 C74,42 62,42 54,34 L54,26"
+        android:strokeWidth="11"
+        android:strokeColor="#10B981"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round" />
+    
+    <!-- Snake Head accent -->
+    <path
+        android:pathData="M54,25 A5.5,5.5 0 1,0 54,24.9 Z"
+        android:fillColor="#34D399" />
+
+    <!-- Cute Eyes -->
+    <path
+        android:pathData="M50.5,23 A2,2 0 1,0 50.5,22.9 Z"
+        android:fillColor="#0B132B" />
+    <path
+        android:pathData="M57.5,23 A2,2 0 1,0 57.5,22.9 Z"
+        android:fillColor="#0B132B" />
+
+    <!-- Escape Arrow (pointing up) -->
+    <path
+        android:pathData="M54,12 L50,18 M54,12 L58,18 M54,12 L54,20"
+        android:strokeWidth="2.5"
+        android:strokeColor="#FCD34D"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round" />
+</vector>
